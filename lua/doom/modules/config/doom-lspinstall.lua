@@ -1,16 +1,5 @@
 return function()
   local nvim_lsp = require("lspconfig")
-  local lua_lsp = require("lua-dev").setup({
-    lspconfig = {
-      settings = {
-        Lua = {
-          workspace = {
-            preloadFileSize = 200,
-          },
-        },
-      },
-    },
-  })
 
   -- https://github.com/kabouzeid/nvim-lspinstall#advanced-configuration-recommended
   local function setup_servers()
@@ -18,11 +7,18 @@ return function()
     require("lspinstall").setup()
     local servers = require("lspinstall").installed_servers()
     for _, server in pairs(servers) do
-      -- Configure sumneko for neovim lua development
-      if server == "lua" then
-        nvim_lsp.lua.setup(lua_lsp)
+      if server == "ruby" then
+        nvim_lsp.solargraph.setup({
+          init_options = {
+            formatting = true,
+          },
+          settings = {
+            solargraph = {
+              diagnostics = true,
+            },
+          },
+        })
       else
-        -- Use default settings for all the other language servers
         nvim_lsp[server].setup({})
       end
     end

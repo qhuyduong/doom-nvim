@@ -111,5 +111,10 @@ return function()
         cmd = { "prettier -w --parser yaml" },
       },
     },
+    ruby = {
+      {
+        cmd = { "rubocop --auto-correct" },
+      },
+    },
   })
 end

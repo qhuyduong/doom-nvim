@@ -70,6 +70,7 @@ return function()
     ["`"] = { "Find file" },
     ["."] = { "Browse files" },
     [","] = { "Switch buffer" },
+    ["*"] = { "Search the word under cursor" },
     ["/"] = { "Search a word" },
     [":"] = { "Command history" },
     ["h"] = { "Manpage" },
@@ -204,6 +205,14 @@ return function()
       ["k"] = { "jump forward" },
       ["p"] = { "pop tag stack" },
       ["t"] = { "jump to tag" },
+    },
+    ["t"] = {
+      name = "+test",
+      ["f"] = { "File" },
+      ["l"] = { "Last" },
+      ["n"] = { "Nearest" },
+      ["s"] = { "Suite" },
+      ["v"] = { "Visit" },
     },
   }
 

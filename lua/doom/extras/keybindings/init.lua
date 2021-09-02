@@ -252,11 +252,19 @@ else
 end
 
 -- TAB to cycle buffers too, why not?
-utils.map("n", "<Tab>", ":bnext<CR>", opts, "Movement", "cycle_next_buffer", "Goto next buffer")
+utils.map(
+  "n",
+  "<Tab>",
+  ":BufferLineCycleNext<CR>",
+  opts,
+  "Movement",
+  "cycle_next_buffer",
+  "Goto next buffer"
+)
 utils.map(
   "n",
   "<S-Tab>",
-  ":bprevious<CR>",
+  ":BufferLineCyclePrev<CR>",
   opts,
   "Movement",
   "cycle_prev_buffer",
@@ -310,10 +318,10 @@ end
 ---[[-------------------------]]---
 --     Window Movements keys     --
 ---]]-------------------------]]---
-utils.map("n", "<C-h>", "<C-w>h", opts, "Movement", "left_window", "Goto left window")
+--[[ utils.map("n", "<C-h>", "<C-w>h", opts, "Movement", "left_window", "Goto left window")
 utils.map("n", "<C-j>", "<C-w>j", opts, "Movement", "down_window", "Goto down window")
 utils.map("n", "<C-k>", "<C-w>k", opts, "Movement", "up_window", "Goto upper window")
-utils.map("n", "<C-l>", "<C-w>l", opts, "Movement", "right_window", "Goto right window")
+utils.map("n", "<C-l>", "<C-w>l", opts, "Movement", "right_window", "Goto right window") ]]
 
 ---[[-----------------]]---
 --     Escape Remaps     --
@@ -499,6 +507,33 @@ utils.map(
   "Movement",
   "switch_buffers",
   "Switch buffers"
+)
+utils.map(
+  "n",
+  "<leader>*",
+  ':lua require("telescope.builtin").live_grep({ default_text = vim.fn.expand("<cword>") })<CR>',
+  opts,
+  "Editor",
+  "live_grep_cursor_normal",
+  "Search the word under cursor"
+)
+utils.map(
+  "v",
+  "*",
+  "y/\\V<C-r>=escape(@\",'/\\')<CR><CR>",
+  opts,
+  "Editor",
+  "search_visual",
+  "Search the word under cursor"
+)
+utils.map(
+  "v",
+  "<leader>*",
+  'y:lua require("telescope.builtin").live_grep({ default_text = "<C-r>=escape(@",\'/\\\')<CR>" })<CR>',
+  opts,
+  "Editor",
+  "live_grep_cursor_visual",
+  "Search the word under cursor"
 )
 utils.map(
   "n",
@@ -1110,7 +1145,7 @@ utils.map(
 )
 
 -- jumps
-utils.map("n", "<leader>ja", "<C-^>", opts, "Jumps", "jump_alternate_file", "Alternate file")
+utils.map("n", "<leader>ja", "<cmd>A<CR>", opts, "Jumps", "jump_alternate_file", "Alternate file")
 utils.map("n", "<leader>jj", "<C-o>", opts, "Jumps", "jump_older", "Jump to older pos")
 utils.map("n", "<leader>jk", "<C-i>", opts, "Jumps", "jump_newer", "Jump to newer pos")
 utils.map("n", "<leader>jp", ":pop<CR>", opts, "Jumps", "jump_pop_tag", "Pop from tag stack")
@@ -1129,3 +1164,10 @@ utils.map("n", "<leader>m", "<cmd>w<cr>", opts, "Save", "save_right", "Save m")
 
 -- man pages
 utils.map("n", "<leader>h", ":Man ", { silent = false }, "Man page", "man_page", "Man page")
+
+-- test
+utils.map("n", "<leader>tf", "<cmd>TestFile<CR>", opts, "Test", "test_file", "Test File")
+utils.map("n", "<leader>tl", "<cmd>TestLast<CR>", opts, "Test", "test_last", "Test Last")
+utils.map("n", "<leader>tn", "<cmd>TestNearest<CR>", opts, "Test", "test_nearest", "Test Nearest")
+utils.map("n", "<leader>ts", "<cmd>TestSuite<CR>", opts, "Test", "test_suite", "Test Suite")
+utils.map("n", "<leader>tv", "<cmd>TestVisit<CR>", opts, "Test", "test_vist", "Test Visit")
