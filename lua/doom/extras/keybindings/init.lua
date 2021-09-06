@@ -400,17 +400,6 @@ utils.map(
 utils.map("x", "K", ":move '<-2<CR>gv-gv", opts, "Editor", "select_right", "Move selection right")
 utils.map("x", "J", ":move '>+1<CR>gv-gv", opts, "Editor", "select_left", "Move selection left")
 
--- get out of terminal insert mode into normal mode with Esc
-utils.map(
-  "t",
-  "<Esc>",
-  "<C-\\><C-n>",
-  opts,
-  "Editor",
-  "exit_insert_term",
-  "Exit insert mode (inside a terminal)"
-)
-
 ---[[-----------------]]---
 --    Resizing Splits    --
 ---]]-----------------[[---
