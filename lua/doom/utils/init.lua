@@ -9,7 +9,7 @@ local system = require("doom.core.system")
 
 -------------------- HELPERS --------------------
 -- Doom Nvim version
-M.doom_version = "3.1.0"
+M.doom_version = "3.1.1"
 
 -- file_exists checks if the given file exists
 -- @tparam string path The path to the file
@@ -153,7 +153,7 @@ M.load_modules = function(module_path, modules)
       string.format("%s.%s", module_path, modules[i])
     )
     if not ok then
-      log.error(
+      require("doom.extras.logging").error(
         string.format(
           "There was an error loading the module '%s.%s'. Traceback:\n%s",
           module_path,
