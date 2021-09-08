@@ -20,7 +20,7 @@ local doom = {
   -- false : Disable format on save
   -- true  : Enable format on save
   -- @default = false
-  fmt_on_save = false,
+  fmt_on_save = true,
 
   -- Disable Vim macros
   -- false : Enable Vim macros
@@ -51,7 +51,7 @@ local doom = {
   -- false : ignores undo Directories (this code block will be ignored)
   -- true  : enable undo files/undo dirs.
   -- @default = false
-  backup = false, -- WARNING: if you change this to false and you have an undo dir already, it will REMOVE the undodir (loss of data might take place)
+  backup = true, -- WARNING: if you change this to false and you have an undo dir already, it will REMOVE the undodir (loss of data might take place)
 
   -- Enable Line wrapping
   -- false : disables line wrapping
@@ -118,7 +118,7 @@ local doom = {
   -- false : won't use third party clipboard
   -- true  : enables third part clipboard
   -- @default = true
-  clipboard = true,
+  clipboard = false,
 
   -- Enable auto comment (current line must be commented)
   -- false : disables auto comment
@@ -192,7 +192,7 @@ local doom = {
   -- Set max cols
   -- Defines the column to show a vertical marker
   -- @default = 80
-  max_columns = 80,
+  max_columns = 0,
 
   -- Completion box height
   -- @default = 10
@@ -257,7 +257,7 @@ local doom = {
 
   -- Default colorscheme
   -- @default = doom-one
-  colorscheme = "doom-one",
+  colorscheme = "tokyonight",
 
   -- Background color
   -- @default = dark
@@ -325,7 +325,36 @@ local nvim = {
   -- @default = {}
   -- example:
   --   { ['sonokai_style'] = 'andromeda' }
-  global_variables = {},
+  global_variables = {
+    ["test#strategy"] = "vimux",
+    ["test#preserve_screen"] = 1,
+    ["projectionist_heuristics"] = {
+      ["*.rb"] = {
+        ["lib/*.rb"] = {
+          ["alternate"] = "spec/lib/{}_spec.rb",
+          ["type"] = "source",
+        },
+        ["app/*.rb"] = {
+          ["alternate"] = "spec/{}_spec.rb",
+          ["type"] = "source",
+        },
+        ["spec/*_spec.rb"] = {
+          ["alternate"] = { "{}.rb", "app/{}.rb" },
+          ["type"] = "spec",
+        },
+      },
+      ["*.js"] = {
+        ["*.spec.js"] = {
+          ["alternate"] = "{dirname}/../{basename}.js",
+          ["type"] = "spec",
+        },
+        ["*.js"] = {
+          ["alternate"] = "{dirname}/__tests__/{basename}.spec.js",
+          ["type"] = "source",
+        },
+      },
+    },
+  },
 
   -- Set custom autocommands
   -- @default = {}
@@ -356,7 +385,10 @@ local nvim = {
   --   {
   --      'echo "Hello, custom commands!"'
   --   }
-  commands = {},
+  commands = {
+    "set ignorecase",
+    "set smartcase",
+  },
 
   -- Set custom functions
   -- @default = {}

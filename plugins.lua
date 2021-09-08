@@ -12,4 +12,20 @@
 --     },
 -- }
 
-return {}
+return {
+  { "folke/tokyonight.nvim" },
+  { "christoomey/vim-tmux-navigator" },
+  { "vim-test/vim-test" },
+  { "preservim/vimux" },
+  { "tpope/vim-projectionist" },
+  { "matze/vim-move" },
+  {
+    "blackCauldron7/surround.nvim",
+    config = function()
+      vim.g.surround_load_autogroups = false
+      vim.g.surround_mappings_style = "surround"
+      vim.g.surround_load_keymaps = true
+      require("surround").setup({})
+    end,
+  },
+}
