@@ -499,6 +499,15 @@ utils.map(
 )
 utils.map(
   "n",
+  "<leader>'",
+  "<cmd>Telescope resume<CR>",
+  opts,
+  "Editor",
+  "resume_last_search",
+  "Resume last search"
+)
+utils.map(
+  "n",
   "<leader>*",
   ':lua require("telescope.builtin").live_grep({ default_text = vim.fn.expand("<cword>") })<CR>',
   opts,

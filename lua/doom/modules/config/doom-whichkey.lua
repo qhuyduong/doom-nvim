@@ -73,6 +73,7 @@ return function()
     ["*"] = { "Search the word under cursor" },
     ["/"] = { "Search a word" },
     [":"] = { "Command history" },
+    ["'"] = { "Resume last search" },
     ["h"] = { "Manpage" },
     ["m"] = { "Save" },
     ["v"] = { "Save" },
