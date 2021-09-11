@@ -817,6 +817,15 @@ utils.map(
 )
 utils.map(
   "n",
+  "<leader>sd",
+  '<cmd>Telescope live_grep search_dirs={"%:p:h"}<CR>',
+  opts,
+  "Editor",
+  "live_grep_directory",
+  "Search a word under current buffer directory"
+)
+utils.map(
+  "n",
   "<leader>sb",
   "<cmd>Telescope current_buffer_fuzzy_find<CR>",
   opts,

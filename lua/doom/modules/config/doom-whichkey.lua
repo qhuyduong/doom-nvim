@@ -165,6 +165,7 @@ return function()
     ["s"] = {
       name = "+search",
       ["g"] = { "Grep" },
+      ["d"] = { "Grep in current buffer directory" },
       ["b"] = { "Buffer" },
       ["s"] = { "Goto symbol" },
       ["h"] = { "Command history" },
